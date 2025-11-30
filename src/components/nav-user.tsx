@@ -1,19 +1,12 @@
 'use client'
 
-import {
-  IconCreditCard,
-  IconDotsVertical,
-  IconLogout,
-  IconNotification,
-  IconUserCircle,
-} from '@tabler/icons-react'
+import { IconDotsVertical, IconLogout } from '@tabler/icons-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -47,7 +40,8 @@ export function NavUser() {
 
   const youtubeChannel = session.youtubeChannel
   const userName = youtubeChannel?.title || session.user?.name || 'User Name'
-  const userEmail = session.user?.email || 'User Email'
+  const userEmail =
+    youtubeChannel?.customUrl || session.user?.email || 'User Email'
   const userImage = youtubeChannel?.thumbnail || session.user?.image || ''
   const initials = userName
     .split(' ')
@@ -102,21 +96,6 @@ export function NavUser() {
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <IconUserCircle />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconCreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconNotification />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => signOut()}>
               <IconLogout />
