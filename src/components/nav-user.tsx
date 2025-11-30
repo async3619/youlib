@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   IconCreditCard,
@@ -6,10 +6,10 @@ import {
   IconLogout,
   IconNotification,
   IconUserCircle,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react'
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,43 +18,43 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { signIn, signOut, useSession } from "next-auth/react";
+} from '@/components/ui/sidebar'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 export function NavUser() {
-  const { isMobile } = useSidebar();
-  const { data: session } = useSession();
+  const { isMobile } = useSidebar()
+  const { data: session } = useSession()
 
   if (!session) {
     return (
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton size="lg" asChild className="w-full">
-            <Button onClick={() => signIn("google")} className="w-full">
+            <Button onClick={() => signIn('google')} className="w-full">
               로그인
             </Button>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
-    );
+    )
   }
 
-  const youtubeChannel = session.youtubeChannel;
-  const userName = youtubeChannel?.title || session.user?.name || "User Name";
-  const userEmail = session.user?.email || "User Email";
-  const userImage = youtubeChannel?.thumbnail || session.user?.image || "";
+  const youtubeChannel = session.youtubeChannel
+  const userName = youtubeChannel?.title || session.user?.name || 'User Name'
+  const userEmail = session.user?.email || 'User Email'
+  const userImage = youtubeChannel?.thumbnail || session.user?.image || ''
   const initials = userName
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
-    .join("")
+    .join('')
     .toUpperCase()
-    .slice(0, 2);
+    .slice(0, 2)
 
   return (
     <SidebarMenu>
@@ -82,7 +82,7 @@ export function NavUser() {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
+            side={isMobile ? 'bottom' : 'right'}
             align="end"
             sideOffset={4}
           >
@@ -126,5 +126,5 @@ export function NavUser() {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  );
+  )
 }

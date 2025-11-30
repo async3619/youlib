@@ -1,27 +1,27 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-import eslintConfigPrettier from "eslint-config-prettier/flat";
-import unusedImports from "eslint-plugin-unused-imports";
+import { defineConfig, globalIgnores } from 'eslint/config'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
+import unusedImports from 'eslint-plugin-unused-imports'
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
     plugins: {
-      "unused-imports": unusedImports,
+      'unused-imports': unusedImports,
     },
     rules: {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": [
-        "error",
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'error',
         {
-          vars: "all",
-          varsIgnorePattern: "^_",
-          args: "after-used",
-          argsIgnorePattern: "^_",
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
         },
       ],
     },
@@ -30,11 +30,11 @@ const eslintConfig = defineConfig([
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
   ]),
-]);
+])
 
-export default eslintConfig;
+export default eslintConfig
