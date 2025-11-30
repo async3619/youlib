@@ -3,7 +3,6 @@
 import { IconDotsVertical, IconLogout } from '@tabler/icons-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,24 +17,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
 export function NavUser() {
   const { isMobile } = useSidebar()
   const { data: session } = useSession()
 
   if (!session) {
-    return (
-      <SidebarMenu>
-        <SidebarMenuItem>
-          <SidebarMenuButton size="lg" asChild className="w-full">
-            <Button onClick={() => signIn('google')} className="w-full">
-              로그인
-            </Button>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </SidebarMenu>
-    )
+    return null
   }
 
   const youtubeChannel = session.youtubeChannel
